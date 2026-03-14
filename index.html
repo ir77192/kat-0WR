@@ -15,62 +15,53 @@
             height: 100vh; 
             flex-direction: column;
             margin: 0;
+            padding: 0;
         }
         
         pre {
-            font-size: 1.1vw; 
-            line-height: 1.0; /* 촘촘하게 붙여야 제맛 */
+            font-size: 1.1vw; /* 화면 크기에 맞춰서 적당히 조절 */
+            line-height: 1.1;
             font-weight: bold;
-            text-align: center;
-            white-space: pre;
+            white-space: pre; /* 공백과 줄바꿈을 있는 그대로 유지 */
         }
 
         .blink { animation: blinker 0.4s step-end infinite; }
         @keyframes blinker { 50% { opacity: 0; } }
 
         #press-key {
-            margin-top: 30px;
-            font-size: 1.6em;
+            margin-top: 20px;
+            font-size: 1.5em;
             font-weight: bold;
-            letter-spacing: 2px;
         }
     </style>
 </head>
 <body>
 
 <pre>
-                      uu$$$$$$$$$$$uu
-                   uu$$$$$$$$$$$$$$$$$uu
-                  u$$$$$$$$$$$$$$$$$$$$$u
-                 u$$$$$$$$$$$$$$$$$$$$$$$u
-                u$$$$$$$$$$$$$$$$$$$$$$$$$u
-                u$$$$$$* *$$$* *$$$$$$u
-                *$$$$* u$u       $$$$*
-                 $$$u       u$u       u$$$
-                 $$$u      u$$$u      u$$$
-                  *$$$$uu$$$   $$$uu$$$$*
-                   *$$$$$$$* *$$$$$$$*
-                     u$$$$$$$u$$$$$$$u
-                      u$*$*$*$*$*$*$u
-            uuu        $$u$ $ $ $ $u$$       uuu
-           u$$$$       $$$$$u$u$u$$$       u$$$$
-            $$$$$uu      *$$$$$$$$$* uu$$$$$
-          u$$$$$$$$$$$uu    ***** uuuu$$$$$$$$$$$u
-          $$$$***$$$$$$$$$$$$$***$$$$$$$$$$uuu   uu$$
-           *** **$$$$$$$$$$$uu **$*** uuuu
-                 **$$$$$$$$uuu u$$$uuu$$$$$$$$$uu
-                **$$$$$$$$$$$uuu$$$ $$$$$$$$$$****
-               **$$$$$$$$$$$* *$$$$$*
-                        **$$$$**
-                         $$$*
+             uu$$$$$$$$$$$uu          
+        uu$$$$$$$$$$$$$$$$$uu         
+       u$$$$$$$$$$$$$$$$$$$$$u        
+      u$$$$$$$$$$$$$$$$$$$$$$$u       
+     u$$$$$$$$$$$$$$$$$$$$$$$$$u       
+     u$$$$$$* *$$$* *$$$$$$u       
+     *$$$$* u$u       $$$$* $$$u       u$u       u$$$        
+      $$$u      u$$$u      u$$$         
+       *$$$$uu$$$   $$$uu$$$$* *$$$$$$$* *$$$$$$$* u$$$$$$$u$$$$$$$u             
+           u$*$*$*$*$*$*$u  uuu        
+      $$u$ $ $ $ $u$$       uuu  
+u$$$$       $$$$$u$u$u$$$       u$$$$  
+$$$$$uu      *$$$$$$$$$* uu$$$$$$
+u$$$$$$$$$$$uu    ***** uuuu$$$$$$$$$$$$$***
+$$$$$$$$$$uuu   uu$$$$$$$$$***$$$* *** **$$$$$$$$$$$uu **$*** uuuu 
+**$$$$$$$$$$uuu u$$$uuu$$$$$$$$$uu 
+**$$$$$$$$$$$uuu$$$ $$$$$$$$$$**** **$$$$$$$$$$$* *$$$$$* **$$$$** $$$* $$$$*
 </pre>
 
 <div id="press-key" class="blink">PRESS ANY KEY!</div>
 
 <script>
-    // 클릭하면 릭롤링 행 급행열차 ㅋㅋㅋ
     document.body.onclick = function() {
-        alert("Petya Decryption Tool Starting...");
+        alert("ACCESS DENIED!");
         window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
     };
 </script>
