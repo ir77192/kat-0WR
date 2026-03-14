@@ -2,65 +2,69 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>⚡ SYSTEM CRITICAL FAILURE ⚡</title>
+    <title>!!! CRITICAL SYSTEM ERROR !!!</title>
     <style>
-        body { background-color: black; color: white; font-family: "Courier New", Courier, monospace; overflow: hidden; display: flex; justify-content: center; align-items: center; height: 100vh; flex-direction: column;}
+        body { 
+            background-color: #aa0000; /* Petya 특유의 핏빛 배경 */
+            color: white; 
+            font-family: "Courier New", Courier, monospace; 
+            overflow: hidden; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            flex-direction: column;
+            margin: 0;
+        }
         
-        /* 해골 아스키아트 스타일 */
-        #skull { color: red; font-weight: bold; font-size: 1.2vw; line-height: 1.1; white-space: pre; text-align: center; margin-bottom: 20px;}
+        /* 해골 아스키아트 - 더 정교하게 수정 */
+        pre { 
+            font-size: 1.2vw; 
+            line-height: 1.2; 
+            color: white;
+            text-shadow: 2px 2px 5px black;
+        }
         
-        /* 깜빡이는 효과 */
-        .blink { animation: blinker 0.15s linear infinite;}
-        @keyframes blinker { 50% { opacity: 0; }}
-        
-        /* 경고 메시지 */
-        #message { text-align: center; color: white; font-size: 1.3em; line-height: 1.6;}
-        .warning { color: yellow; font-weight: bold; font-size: 1.5em;}
-        
-        /* 하단 캡션 */
-        #footer { margin-top: 30px; font-size: 0.9em; color: gray;}
+        .blink { animation: blinker 0.2s linear infinite; }
+        @keyframes blinker { 50% { opacity: 0; } }
+
+        .content { text-align: center; background: rgba(0,0,0,0.3); padding: 20px; border-radius: 10px; }
+        h1 { font-size: 2em; margin: 10px 0; color: yellow; text-transform: uppercase; }
+        p { font-size: 1.1em; }
     </style>
 </head>
 <body>
-    <div id="skull">
-           XXXXXXXXXXX
-       XXXXXXXXXXXXXXXXX
-     XXXXXXXXXXXXXXXXXXXXX
-    XXXXXXXXXXXXXXXXXXXXXXX
-    XXXXX  <span class="blink">XXXX</span>  XXXXX  <span class="blink">XXXX</span>  XXXXX
-    XXXXX   <span class="blink">XX</span>   XXXXX   <span class="blink">XX</span>   XXXXX
-    XXXXX       XXXXX       XXXXX
-    XXXXXX     XXXXXXX     XXXXXX
-    XXXXXXX   XXXXXXXXX   XXXXXXX
-    XXXXXXXX XXXXXXXXXXX XXXXXXXX
-     XXXXXXXXX XXXXXXXXX XXXXXXXX
-      XXXXXXXX  XXXXXXX  XXXXXXX
-       XXXXXXX   XXXXX   XXXXXX
-        XXXXXX           XXXXX
-          XXXX           XXXX
-           XXXXX  XXXX  XXXXX
-            XXXXXXXXXXXXXXX
-              XXXXXXXXXXX
-    </div>
-    
-    <div id="message">
-        <span class="warning blinking">[!] YOUR FILES ARE BEING ENCRYPTED! [!]</span><br><br>
-        Do NOT turn off your computer.<br>
-        If you stop the process, you will lose all your data.<br>
-        Your personal identifier is: <span style="color:red;">PETYA-FAKE-PRANK-$(USERNAME)</span><br><br>
-        <span class="warning">SEND 0.5 BTC TO: 1PetyaFakeAddress12345678</span>
-    </div>
 
-    <div id="footer">
-        Press F11 for "full-screen decryption" or close tab.
-    </div>
+<pre>
+       ██████████████████
+     ██████████████████████
+   ██████████████████████████
+  ████████████████████████████
+  █████  <span class="blink">████</span>  ██████  <span class="blink">████</span>  █████
+  █████  <span class="blink">████</span>  ██████  <span class="blink">████</span>  █████
+  ████████████████████████████
+  ████████████████████████████
+   ████████  ████████  ██████
+    ████████████████████████
+     ████  ██  ██  ██  ████
+      ████████████████████
+        ██  ██  ██  ██  ██
+</pre>
 
-    <script>
-        // 5초 후에 낚시 종료 메시지 띄우기 (친구 심장 마비 방지)
-        setTimeout(() => {
-            alert("HAHAHA! Just Kidding! This is a PRANK page. You are totally SAFE.");
-            window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"; // 릭롤링 유튜브로 리다이렉트 (옵션)
-        }, 10000); // 10초
-    </script>
+<div class="content">
+    <h1 class="blink">You have been infected!</h1>
+    <p>All your files have been encrypted by <b>Petya Ransomware</b>.</p>
+    <p>Send 0.5 BTC to: <span style="color: #00ff00;">1PetyaFakeAddress12345678</span></p>
+    <p style="font-size: 0.8em; color: #ccc;">(Press F11 to start "Decryption" process...)</p>
+</div>
+
+<script>
+    // 8초 후 릭롤링 리다이렉트
+    setTimeout(() => {
+        alert("낚였지? ㅋㅋㅋㅋㅋ 공부나 해라 임마!");
+        window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+    }, 8000);
+</script>
+
 </body>
 </html>
