@@ -67,11 +67,28 @@ $$$$***$$$$$$$$$$uuu   uu$$$$$$$$$***$$$*
 <div id="press-key" class="blink">PRESS ANY KEY!</div>
 
 <script>
+    let closeCount = 0; // 닫기 시도 횟수
+    const maxRetries = 3; // 최대 방해 횟수
+
+    // 사용자가 창을 닫거나 새로고침하려고 할 때 발생
+    window.onbeforeunload = function(e) {
+        if (closeCount < maxRetries) {
+            closeCount++;
+            
+            // 경고 메시지 (브라우저마다 기본 문구로 대체될 수 있음)
+            const msg = `[경고] 시스템 암호화가 ${closeCount * 30}% 진행되었습니다. 지금 중단하면 데이터가 영구 손실됩니다!`;
+            e.returnValue = msg;
+            return msg;
+        }
+    };
+
+    // 클릭 시 릭롤링은 그대로 유지
     document.body.onclick = function() {
-        alert("ACCESS DENIED!");
-        window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+        if (confirm("START DECRYPTION PROCESS?")) {
+            alert("STARTING... PLEASE WAIT.");
+            window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+        }
     };
 </script>
-
 </body>
 </html>
