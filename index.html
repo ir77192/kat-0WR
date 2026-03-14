@@ -2,10 +2,10 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>!!! CRITICAL SYSTEM ERROR !!!</title>
+    <title>!!! SYSTEM FAILURE !!!</title>
     <style>
         body { 
-            background-color: #aa0000; /* Petya 특유의 핏빛 배경 */
+            background-color: #aa0000; 
             color: white; 
             font-family: "Courier New", Courier, monospace; 
             overflow: hidden; 
@@ -17,51 +17,53 @@
             margin: 0;
         }
         
-        /* 해골 아스키아트 - 더 정교하게 수정 */
+        /* 해골 아스키아트 - 대칭 및 두께 정밀 수정 */
         pre { 
-            font-size: 1.2vw; 
-            line-height: 1.2; 
+            font-size: 1.1vw; 
+            line-height: 1.0; 
             color: white;
-            text-shadow: 2px 2px 5px black;
+            text-shadow: 3px 3px 5px black;
+            font-weight: bold;
         }
         
         .blink { animation: blinker 0.2s linear infinite; }
         @keyframes blinker { 50% { opacity: 0; } }
 
-        .content { text-align: center; background: rgba(0,0,0,0.3); padding: 20px; border-radius: 10px; }
-        h1 { font-size: 2em; margin: 10px 0; color: yellow; text-transform: uppercase; }
-        p { font-size: 1.1em; }
+        .content { text-align: center; background: rgba(0,0,0,0.4); padding: 25px; border-radius: 15px; margin-top: 10px; border: 1px solid white; }
+        h1 { font-size: 1.8em; margin: 5px 0; color: yellow; }
+        p { font-size: 1em; margin: 5px 0; }
+        .btc { color: #00ff00; font-weight: bold; }
     </style>
 </head>
 <body>
 
 <pre>
-       ██████████████████
-     ██████████████████████
-   ██████████████████████████
-  ████████████████████████████
-  █████  <span class="blink">████</span>  ██████  <span class="blink">████</span>  █████
-  █████  <span class="blink">████</span>  ██████  <span class="blink">████</span>  █████
-  ████████████████████████████
-  ████████████████████████████
-   ████████  ████████  ██████
-    ████████████████████████
-     ████  ██  ██  ██  ████
-      ████████████████████
-        ██  ██  ██  ██  ██
+           ██████████████████
+         ██████████████████████
+       ██████████████████████████
+      ████████████████████████████
+      █████  <span class="blink">██████</span>  ████  <span class="blink">██████</span>  █████
+      █████  <span class="blink">██████</span>  ████  <span class="blink">██████</span>  █████
+      ████████████████████████████
+      ██████████████  ████████████
+       ██████████        ████████
+        ████████████████████████
+         ████  ██  ██  ██  ████
+          ████████████████████
+            ██  ██  ██  ██  ██
 </pre>
 
 <div class="content">
-    <h1 class="blink">You have been infected!</h1>
-    <p>All your files have been encrypted by <b>Petya Ransomware</b>.</p>
-    <p>Send 0.5 BTC to: <span style="color: #00ff00;">1PetyaFakeAddress12345678</span></p>
-    <p style="font-size: 0.8em; color: #ccc;">(Press F11 to start "Decryption" process...)</p>
+    <h1 class="blink">CRITICAL ERROR: INFECTED</h1>
+    <p>All your files have been encrypted by <b>Petya.A</b></p>
+    <p>Send 0.5 BTC to: <span class="btc">1PetyaFakeAddress12345678</span></p>
+    <p style="font-size: 0.8em; color: #aaa;">(Press F11 to attempt recovery...)</p>
 </div>
 
 <script>
-    // 8초 후 릭롤링 리다이렉트
+    // 8초 뒤 릭롤링은 여전함 ㅋㅋㅋ
     setTimeout(() => {
-        alert("낚였지? ㅋㅋㅋㅋㅋ 공부나 해라 임마!");
+        alert("친구야 놀랐지? ㅋㅋㅋㅋㅋ");
         window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
     }, 8000);
 </script>
