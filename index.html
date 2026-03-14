@@ -2,38 +2,65 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>CRITICAL SYSTEM ERROR</title>
+    <title>⚡ SYSTEM CRITICAL FAILURE ⚡</title>
     <style>
-        body { background-color: black; color: red; font-family: "Courier New", Courier, monospace; overflow: hidden; }
-        #console { margin: 50px; line-height: 1.5; font-size: 1.2em; }
-        .blink { animation: blinker 1s linear infinite; }
-        @keyframes blinker { 50% { opacity: 0; } }
+        body { background-color: black; color: white; font-family: "Courier New", Courier, monospace; overflow: hidden; display: flex; justify-content: center; align-items: center; height: 100vh; flex-direction: column;}
+        
+        /* 해골 아스키아트 스타일 */
+        #skull { color: red; font-weight: bold; font-size: 1.2vw; line-height: 1.1; white-space: pre; text-align: center; margin-bottom: 20px;}
+        
+        /* 깜빡이는 효과 */
+        .blink { animation: blinker 0.15s linear infinite;}
+        @keyframes blinker { 50% { opacity: 0; }}
+        
+        /* 경고 메시지 */
+        #message { text-align: center; color: white; font-size: 1.3em; line-height: 1.6;}
+        .warning { color: yellow; font-weight: bold; font-size: 1.5em;}
+        
+        /* 하단 캡션 */
+        #footer { margin-top: 30px; font-size: 0.9em; color: gray;}
     </style>
 </head>
 <body>
-    <div id="console"></div>
+    <div id="skull">
+           XXXXXXXXXXX
+       XXXXXXXXXXXXXXXXX
+     XXXXXXXXXXXXXXXXXXXXX
+    XXXXXXXXXXXXXXXXXXXXXXX
+    XXXXX  <span class="blink">XXXX</span>  XXXXX  <span class="blink">XXXX</span>  XXXXX
+    XXXXX   <span class="blink">XX</span>   XXXXX   <span class="blink">XX</span>   XXXXX
+    XXXXX       XXXXX       XXXXX
+    XXXXXX     XXXXXXX     XXXXXX
+    XXXXXXX   XXXXXXXXX   XXXXXXX
+    XXXXXXXX XXXXXXXXXXX XXXXXXXX
+     XXXXXXXXX XXXXXXXXX XXXXXXXX
+      XXXXXXXX  XXXXXXX  XXXXXXX
+       XXXXXXX   XXXXX   XXXXXX
+        XXXXXX           XXXXX
+          XXXX           XXXX
+           XXXXX  XXXX  XXXXX
+            XXXXXXXXXXXXXXX
+              XXXXXXXXXXX
+    </div>
+    
+    <div id="message">
+        <span class="warning blinking">[!] YOUR FILES ARE BEING ENCRYPTED! [!]</span><br><br>
+        Do NOT turn off your computer.<br>
+        If you stop the process, you will lose all your data.<br>
+        Your personal identifier is: <span style="color:red;">PETYA-FAKE-PRANK-$(USERNAME)</span><br><br>
+        <span class="warning">SEND 0.5 BTC TO: 1PetyaFakeAddress12345678</span>
+    </div>
+
+    <div id="footer">
+        Press F11 for "full-screen decryption" or close tab.
+    </div>
+
     <script>
-        const text = [
-            "[!] WARNING: YOUR SYSTEM HAS BEEN INFECTED...",
-            "[!] ENCRYPTING ALL DATA... PLEASE WAIT.",
-            "C:\Users\Documents... [DONE]",
-            "C:\Users\Pictures... [DONE]",
-            "C:\Users\Desktop... [DONE]",
-            "------------------------------------------",
-            "YOUR FILES ARE ENCRYPTED! SEND 0.5 BTC TO:",
-            "1PetyaFakeAddress1234567890",
-            "------------------------------------------",
-            "PRESS F11 TO 'DECRYPT' (OR JUST CLOSE THIS TAB)"
-        ];
-        let i = 0;
-        function typeWriter() {
-            if (i < text.length) {
-                document.getElementById("console").innerHTML += text[i] + "<br>";
-                i++;
-                setTimeout(typeWriter, 800);
-            }
-        }
-        typeWriter();
+        // 5초 후에 낚시 종료 메시지 띄우기 (친구 심장 마비 방지)
+        setTimeout(() => {
+            alert("HAHAHA! Just Kidding! This is a PRANK page. You are totally SAFE.");
+            window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"; // 릭롤링 유튜브로 리다이렉트 (옵션)
+        }, 10000); // 10초
     </script>
 </body>
 </html>
