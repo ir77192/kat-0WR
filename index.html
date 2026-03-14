@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>CRITICAL SYSTEM ERROR</title>
+    <style>
+        body { background-color: black; color: red; font-family: "Courier New", Courier, monospace; overflow: hidden; }
+        #console { margin: 50px; line-height: 1.5; font-size: 1.2em; }
+        .blink { animation: blinker 1s linear infinite; }
+        @keyframes blinker { 50% { opacity: 0; } }
+    </style>
+</head>
+<body>
+    <div id="console"></div>
+    <script>
+        const text = [
+            "[!] WARNING: YOUR SYSTEM HAS BEEN INFECTED...",
+            "[!] ENCRYPTING ALL DATA... PLEASE WAIT.",
+            "C:\Users\Documents... [DONE]",
+            "C:\Users\Pictures... [DONE]",
+            "C:\Users\Desktop... [DONE]",
+            "------------------------------------------",
+            "YOUR FILES ARE ENCRYPTED! SEND 0.5 BTC TO:",
+            "1PetyaFakeAddress1234567890",
+            "------------------------------------------",
+            "PRESS F11 TO 'DECRYPT' (OR JUST CLOSE THIS TAB)"
+        ];
+        let i = 0;
+        function typeWriter() {
+            if (i < text.length) {
+                document.getElementById("console").innerHTML += text[i] + "<br>";
+                i++;
+                setTimeout(typeWriter, 800);
+            }
+        }
+        typeWriter();
+    </script>
+</body>
+</html>
