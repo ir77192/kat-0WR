@@ -1,47 +1,49 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<title>Petya Ransomware</title>
-<style>
-body { 
-background-color: #aa0000; 
-color: white; 
-font-family: "Courier New", Courier, monospace; 
-overflow: hidden; 
-display: flex; 
-justify-content: center; 
-align-items: center; 
-height: 100vh; 
-flex-direction: column;
-margin: 0;
-padding: 0;
-}
+    <meta charset="UTF-8">
+    <title>Petya Ransomware</title>
+    <style>
+        body { 
+            background-color: #aa0000; 
+            color: white; 
+            font-family: "Courier New", Courier, monospace; 
+            overflow: hidden; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            flex-direction: column;
+            margin: 0;
+            padding: 0;
+        }
+        
+        pre {
+            font-size: 1.1vw; /* 화면 크기에 맞춰서 적당히 조절 */
+            line-height: 1.1;
+            font-weight: bold;
+            white-space: pre; /* 공백과 줄바꿈을 있는 그대로 유지 */
+        }
 
-pre {
-font-size: 1.1vw; /* 화면 크기에 맞춰서 적당히 조절 */
-line-height: 1.1;
-font-weight: bold;
-white-space: pre; /* 공백과 줄바꿈을 있는 그대로 유지 */
-}
+        .blink { animation: blinker 0.4s step-end infinite; }
+        @keyframes blinker { 50% { opacity: 0; } }
 
-.blink { animation: blinker 0.4s step-end infinite; }
-@keyframes blinker { 50% { opacity: 0; } }
-
-#press-key {
-margin-top: 20px;
-font-size: 1.5em;
-font-weight: bold;
-}
+        #press-key {
+            margin-top: 20px;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
 
         /* 0.7초마다 토글될 반전 클래스 */
         body.inverted {
             background-color: white !important;
             color: #aa0000 !important;
         }
-</style>
+    </style>
 </head>
 <body>
+
+<pre>
              uu$$$$$$$$$$$uu
           uu$$$$$$$$$$$$$$$$$uu
          u$$$$$$$$$$$$$$$$$$$$$u
@@ -66,38 +68,36 @@ $$$$***$$$$$$$$$$uuu   uu$$$$$$$$$***$$$*
  $$$$$$$$$$****           **$$$$$$$$$$$*
    *$$$$$*                      **$$$$**
      $$$*                         $$$$*
+</pre>
+
 <div id="press-key" class="blink">PRESS ANY KEY!</div>
 
 <script>
     // 0.7초마다 배경/글자 색상 반전 (네가 요청한 기능)
     setInterval(() => {
         document.body.classList.toggle('inverted');
-    }, 200);
+    }, 700);
 
-let closeCount = 0; // 닫기 시도 횟수
-const maxRetries = 300; // 최대 방해 횟수
+    let closeCount = 0; // 닫기 시도 횟수
+    const maxRetries = 300; // 최대 방해 횟수
 
-    // 사용자가 창을 닫거나 새로고침하려고 할 때 발생
     // 창 닫기 방어 로직
-window.onbeforeunload = function(e) {
-if (closeCount < maxRetries) {
-closeCount++;
-            
-            // 경고 메시지 (브라우저마다 기본 문구로 대체될 수 있음)
-const msg = `[경고] 시스템 암호화가 ${closeCount * 30}% 진행되었습니다. 지금 중단하면 데이터가 영구 손실됩니다!`;
-e.returnValue = msg;
-return msg;
-}
-};
+    window.onbeforeunload = function(e) {
+        if (closeCount < maxRetries) {
+            closeCount++;
+            const msg = `[경고] 시스템 암호화가 ${closeCount * 30}% 진행되었습니다. 지금 중단하면 데이터가 영구 손실됩니다!`;
+            e.returnValue = msg;
+            return msg;
+        }
+    };
 
-    // 클릭 시 릭롤링은 그대로 유지
     // 클릭 시 릭롤링
-document.body.onclick = function() {
-if (confirm("START DECRYPTION PROCESS?")) {
-alert("STARTING... PLEASE WAIT.");
-window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-}
-};
+    document.body.onclick = function() {
+        if (confirm("START DECRYPTION PROCESS?")) {
+            alert("STARTING... PLEASE WAIT.");
+            window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+        }
+    };
 </script>
 </body>
 </html>
