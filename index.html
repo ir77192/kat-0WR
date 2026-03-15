@@ -1,169 +1,80 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>⚡ SYSTEM CRITICAL FAILURE ⚡</title>
-    <style>
-        body { margin: 0; padding: 0; background-color: black; overflow: hidden; font-family: "Courier New", Courier, monospace; user-select: none;}
-        
-        /* --- 1. Petya 해골 화면 스타일 --- */
-        #petya-screen {
-            display: flex; justify-content: center; align-items: center; height: 100vh; flex-direction: column;
-            background-color: #aa0000; color: white; transition: opacity 0.5s;
+<meta charset="UTF-8">
+<title>Petya Ransomware</title>
+<style>
+body { 
+background-color: #aa0000; 
+color: white; 
+font-family: "Courier New", Courier, monospace; 
+overflow: hidden; 
+display: flex; 
+justify-content: center; 
+align-items: center; 
+height: 100vh; 
+flex-direction: column;
+margin: 0;
+padding: 0;
+}
+
+pre {
+font-size: 1.1vw; /* 화면 크기에 맞춰서 적당히 조절 */
+line-height: 1.1;
+font-weight: bold;
+white-space: pre; /* 공백과 줄바꿈을 있는 그대로 유지 */
+}
+
+.blink { animation: blinker 0.4s step-end infinite; }
+@keyframes blinker { 50% { opacity: 0; } }
+
+#press-key {
+margin-top: 20px;
+font-size: 1.5em;
+font-weight: bold;
+}
+
+        /* 0.7초마다 토글될 반전 클래스 */
+        body.inverted {
+            background-color: white !important;
+            color: #aa0000 !important;
         }
-        
-        /* 네가 준 해골 그대로 복사 (정렬만 중앙으로 맞춤) */
-        pre {
-            font-size: 1.1vw; line-height: 1.1; font-weight: bold; white-space: pre; 
-            text-align: center; margin: 0;
-        }
-
-        .blink { animation: blinker 0.4s step-end infinite; }
-        @keyframes blinker { 50% { opacity: 0; } }
-
-        #press-key { margin-top: 20px; font-size: 1.5em; font-weight: bold; }
-
-        /* 색상 반전 클래스 */
-        body.inverted #petya-screen { background-color: white !important; color: #aa0000 !important; }
-
-        /* --- 2. Matrix 매트릭스 화면 스타일 --- */
-        #matrix-screen {
-            display: none; /* 처음엔 숨김 */
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: black;
-        }
-        canvas { display: block; }
-
-    </style>
+</style>
 </head>
 <body>
+@@ -67,28 +73,31 @@
+<div id="press-key" class="blink">PRESS ANY KEY!</div>
 
-    <div id="petya-screen">
-<pre>
-             uu$$$$$$$$$$$uu
-          uu$$$$$$$$$$$$$$$$$uu
-         u$$$$$$$$$$$$$$$$$$$$$u
-        u$$$$$$$$$$$$$$$$$$$$$$$u
-       u$$$$$$$$$$$$$$$$$$$$$$$$$u
-       u$$$$$$*   *$$$*   *$$$$$$u
-       *$$$$*      u$u       $$$$*
-        $$$u       u$u       u$$$
-        $$$u      u$$$u      u$$$
-         *$$$$uu$$$   $$$uu$$$$*
-          *$$$$$$$*   *$$$$$$$*
-            u$$$$$$$u$$$$$$$u
-             u$*$*$*$*$*$*$u
-  uuu        $$u$ $ $ $ $u$$       uuu
-  u$$$$       $$$$$u$u$u$$$       u$$$$
-  $$$$$uu      *$$$$$$$$$*     uu$$$$$$
-u$$$$$$$$$$$uu    *****    uuuu$$$$$$$$$
-$$$$***$$$$$$$$$$uuu   uu$$$$$$$$$***$$$*
- ***      **$$$$$$$$$$$uu **$***
-          uuuu **$$$$$$$$$$uuu
- u$$$uuu$$$$$$$$$uu **$$$$$$$$$$$uuu$$$
- $$$$$$$$$$****           **$$$$$$$$$$$*
-   *$$$$$*                      **$$$$**
-     $$$*                         $$$$*
-</pre>
-        <div id="press-key" class="blink">PRESS ANY KEY!</div>
-    </div>
+<script>
+    // 0.7초마다 배경/글자 색상 반전 (네가 요청한 기능)
+    setInterval(() => {
+        document.body.classList.toggle('inverted');
+    }, 700);
 
-    <div id="matrix-screen">
-        <canvas id="matrix-canvas"></canvas>
-    </div>
+let closeCount = 0; // 닫기 시도 횟수
+const maxRetries = 300; // 최대 방해 횟수
 
-    <script>
-        // --- 공통 변수 및 닫기 방어 ---
-        let closeCount = 0; 
-        const maxRetries = 3; // 3번만 방해하게 수정 (친구 빡침 방지)
+    // 사용자가 창을 닫거나 새로고침하려고 할 때 발생
+    // 창 닫기 방어 로직
+window.onbeforeunload = function(e) {
+if (closeCount < maxRetries) {
+closeCount++;
+            
+            // 경고 메시지 (브라우저마다 기본 문구로 대체될 수 있음)
+const msg = `[경고] 시스템 암호화가 ${closeCount * 30}% 진행되었습니다. 지금 중단하면 데이터가 영구 손실됩니다!`;
+e.returnValue = msg;
+return msg;
+}
+};
 
-        // 창 닫기 방어 로직 (이건 계속 유지)
-        window.onbeforeunload = function(e) {
-            if (closeCount < maxRetries) {
-                closeCount++;
-                const msg = `[경고] 시스템 암호화가 ${closeCount * 30}% 진행되었습니다.`;
-                e.returnValue = msg;
-                return msg;
-            }
-        };
-
-        // --- 1. Petya 화면 로직 ---
-        const petyaScreen = document.getElementById('petya-screen');
-        const matrixScreen = document.getElementById('matrix-screen');
-
-        // 0.7초마다 색상 반전 (네가 준 그대로)
-        const invertInterval = setInterval(() => {
-            document.body.classList.toggle('inverted');
-        }, 700);
-
-        // 아무 키나 누르면 화면 전환
-        window.addEventListener('keydown', switchToMatrix);
-        
-        // 클릭해도 화면 전환 (모바일 배려)
-        petyaScreen.addEventListener('click', switchToMatrix);
-
-
-        function switchToMatrix() {
-            // 색상 반전 멈춤
-            clearInterval(invertInterval);
-            document.body.classList.remove('inverted');
-
-            // Petya 화면 숨기고 Matrix 화면 띄움
-            petyaScreen.style.display = 'none';
-            matrixScreen.style.display = 'block';
-
-            // 매트릭스 비 내리기 시작
-            startMatrixRain();
-
-            // 키보드/클릭 이벤트 제거 (중복 실행 방지)
-            window.removeEventListener('keydown', switchToMatrix);
-            petyaScreen.removeEventListener('click', switchToMatrix);
-        }
-
-        // --- 2. Matrix 화면 로직 (매트릭스 비 효과) ---
-        function startMatrixRain() {
-            const canvas = document.getElementById('matrix-canvas');
-            const ctx = canvas.getContext('2d');
-
-            canvas.height = window.innerHeight;
-            canvas.width = window.innerWidth;
-
-            // 떨어질 문자들 (일본어+숫자+영문)
-            const katakana = "アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピ우uxut수투누후무유율구즈부づ푸에ェ케세테네헤메레ヱ게ゼ데베페오ォ코소ト노호모요ョ로ヲ고ゾド보포ヴッン";
-            const nums = "0123456789";
-            const latin = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            const matrix = katakana + nums + latin;
-            const characters = matrix.split('');
-
-            const fontSize = 16;
-            const columns = canvas.width / fontSize;
-            const drops = [];
-            for(let x = 0; x < columns; x++) drops[x] = 1;
-
-            function draw() {
-                // 잔상 효과
-                ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-                ctx.fillStyle = "#0F0"; // 매트릭스 초록색
-                ctx.font = fontSize + "px arial";
-
-                for(let i = 0; i < drops.length; i++) {
-                    const text = characters[Math.floor(Math.random() * characters.length)];
-                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-                    if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
-                    drops[i]++;
-                }
-            }
-            setInterval(draw, 33);
-
-            // 매트릭스 화면 클릭 시 릭롤링
-            matrixScreen.addEventListener('click', () => {
-                alert("YOU GOT RICKROLLED! ㅋㅋㅋ");
-                window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-            });
-        }
-    </script>
+    // 클릭 시 릭롤링은 그대로 유지
+    // 클릭 시 릭롤링
+document.body.onclick = function() {
+if (confirm("START DECRYPTION PROCESS?")) {
+alert("STARTING... PLEASE WAIT.");
+window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+}
+};
+</script>
 </body>
 </html>
